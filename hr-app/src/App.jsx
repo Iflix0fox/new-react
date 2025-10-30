@@ -1,14 +1,16 @@
 import "./App.css";
-import Card from "./components/Card";
+import PersonCard from "./components/PersonCard";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import PersonList from "./components/PersonList";
+import employeeData from "./assets/employeeData.json";
 
 function App() {
   return (
     <div className="app">
       <Header />
       <main className="main-content">
-        <Card
+        <PersonCard
           name="Maria"
           title="CEO"
           salary="5000€"
@@ -16,7 +18,7 @@ function App() {
           email="maria@example.com"
           animal="Cat"
         />
-        <Card
+        <PersonCard
           name="Kati"
           title="Developer"
           salary="4200€"
@@ -24,7 +26,7 @@ function App() {
           email="kati@example.com"
           animal="Dog"
         />
-        <Card
+        <PersonCard
           name="Karin"
           title="Designer"
           salary="3900€"
@@ -32,7 +34,7 @@ function App() {
           email="karin@example.com"
           animal="Rabbit"
         />
-        <Card
+        <PersonCard
           name="Brad"
           title="Designe manger"
           salary="7900€"
@@ -40,6 +42,7 @@ function App() {
           email="brad@example.com"
           animal="cat"
         />
+        <PersonList employees={employeeData} />
       </main>
       <Footer />
     </div>
