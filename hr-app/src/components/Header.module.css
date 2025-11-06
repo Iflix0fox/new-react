@@ -1,6 +1,7 @@
 .header {
   background-color: #4ca9c9;
   padding: 20px;
+  flex: 1;
   border-bottom: 5px solid #000;
 }
 

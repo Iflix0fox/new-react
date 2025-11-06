@@ -1,5 +1,5 @@
 import PersonCard from "./PersonCard";
-import styles from "./Card.module.css";
+import styles from "./personList.module.css";
 
 const PersonList = ({ employees }) => {
   console.log("person list is working", employees);

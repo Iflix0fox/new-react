@@ -3,6 +3,7 @@
   padding: 20px;
   border-top: 5px solid #000;
   text-align: center;
+  flex: 1;
 }
 
 .footer p {

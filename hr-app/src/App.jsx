@@ -7,7 +7,7 @@ import employeeData from "./assets/employeeData.json";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <main className="main-content">
         <PersonList employees={employeeData} />
