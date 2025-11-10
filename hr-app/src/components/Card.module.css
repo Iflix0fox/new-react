@@ -1,7 +1,8 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   text-align: left;
   min-width: 400px;
   background-color: white;
@@ -9,7 +10,6 @@
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   min-height: 200px;
-  border: 5px solid;
 }
 
 .name {

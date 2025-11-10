@@ -1,49 +1,64 @@
 import "./App.css";
-import PersonCard from "./components/PersonCard";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import PersonList from "./components/PersonList";
+import About from "./components/About";
+import { BrowserRouter as Router, Route, Routes } from "react-router";
+import { useState } from "react";
 import employeeData from "./assets/employeeData.json";
 import AddEmployee from "./components/Addemployee";
-import { useState } from "react";
 
 function App() {
-  const [employees, setEmployees] = useState();
+  const [employees, setEmployees] = useState(employeeData);
   const [formData, setFormData] = useState({
-    title: "",
     name: "",
-    age: "",
+    title: "",
     salary: "",
     phone: "",
     email: "",
     animal: "",
+    startDate: "",
+    location: "",
+    department: "",
+    skills: "",
   });
 
-  const handleClick = () => {
+  const handleClick = (employeeData) => {
     setEmployees([
-      ...employees, // make a copy of the existing array
+      ...employees,
       {
-        id: employees.length + 1,
-        name: formData.name,
-        title: formData.title,
-        age: formData.age,
-        salary: formData.salary,
-        phone: formData.phone,
-        email: formData.email,
-        animal: formData.animal,
-        isFavourite: false,
+        id: Date.now(),
+        ...employeeData,
+        skills: formData.skills.split(",").map((skill) => skill.trim()),
       },
     ]);
   };
 
   return (
-    <div>
-      <Header />
-      <main className="main-content">
-        <PersonList employees={employeeData} />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/add-employee"
+              element={
+                <AddEmployee
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleClick={handleClick}
+                />
+              }
+            />
+
+            <Route path="/" element={<PersonList employees={employees} />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
+
 export default App;

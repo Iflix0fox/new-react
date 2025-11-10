@@ -1,5 +1,5 @@
 import styles from "./Card.module.css";
-import Skill from "./Skill";
+import animalEmojis from "../assets/animalEmojis.json";
 
 const Card = (props) => {
   const yearsEmployed =
@@ -12,13 +12,13 @@ const Card = (props) => {
       <div className={styles.salary}>Salary: {props.salary}</div>
       <div className={styles.phone}>Phone: {props.phone}</div>
       <div className={styles.email}>Email: {props.email}</div>
+      <div className={styles.animal}>Animal: {animalEmojis[props.animal]}</div>
       <div className={styles.startDate}>Start Date: {props.startDate}</div>
       <div className={styles.location}>Location: {props.location}</div>
       <div className={styles.department}>Department: {props.department}</div>
       <div className={styles.skills}>Skills: {props.skills.join(", ")}</div>
       <div className={styles.yearsEmployed}>
-        Years Employed: {yearsEmployed}
-        <Skill skills={props.skills} />
+        Years Employed: {yearsEmployed}{" "}
       </div>
 
       {yearsEmployed == 5 ? "🎉 Schedule recognition meeting." : ""}

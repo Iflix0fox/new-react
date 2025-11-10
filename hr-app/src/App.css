@@ -9,11 +9,20 @@ body {
     sans-serif;
 }
 
-.main-content {
+.app {
+  min-height: 100vh;
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background-color: #4ca9c9;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   gap: 40px;
   padding: 60px 20px;
 }
