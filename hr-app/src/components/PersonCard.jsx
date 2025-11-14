@@ -2,6 +2,7 @@ import styles from "./Card.module.css";
 import animalEmojis from "../assets/animalEmojis.json";
 
 const Card = (props) => {
+  console.log(props, "testing");
   const yearsEmployed =
     new Date().getFullYear() - new Date(props.startDate).getFullYear();
 

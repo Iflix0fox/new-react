@@ -4,12 +4,12 @@ import Header from "./components/Header";
 import PersonList from "./components/PersonList";
 import About from "./components/About";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
-import { useState } from "react";
-import employeeData from "./assets/employeeData.json";
+import { useState, useEffect } from "react";
 import AddEmployee from "./components/Addemployee";
+import axios from "axios";
 
 function App() {
-  const [employees, setEmployees] = useState(employeeData);
+  const [employees, setEmployees] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     title: "",
@@ -23,16 +23,25 @@ function App() {
     skills: "",
   });
 
-  const handleClick = (employeeData) => {
-    setEmployees([
-      ...employees,
-      {
-        id: Date.now(),
-        ...employeeData,
-        skills: formData.skills.split(",").map((skill) => skill.trim()),
-      },
-    ]);
+  const handleClick = () => {
+    axios
+      .post("http://localhost:3001/employees", {
+        ...formData,
+        skills: formData.skills
+          ? formData.skills.split(",").map((s) => s.trim())
+          : [],
+        isFavourite: false,
+      })
+      .then((response) => {
+        setEmployees([...employees, response.data]);
+      });
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/employees").then((response) => {
+      setEmployees(response.data);
+    });
+  }, []);
 
   return (
     <Router>
