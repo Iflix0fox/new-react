@@ -21,7 +21,7 @@
       "id": "2",
       "name": "Markus Niemi",
       "title": "UX Designer",
-      "salary": 65000,
+      "salary": 6000,
       "phone": "+358-50-987-6543",
       "email": "markus.niemi@example.com",
       "animal": "Dog",
@@ -174,14 +174,18 @@
       "id": "bc1d",
       "name": "jykgsdfu",
       "title": "",
-      "salary": "",
+      "salary": 200,
       "phone": "",
       "email": "",
       "animal": "dcds",
       "startDate": "",
-      "location": "",
-      "department": "",
-      "skills": [],
+      "location": "Espoo",
+      "department": "Design",
+      "skills": [
+        "Figma",
+        "UI Design",
+        "Prototyping"
+      ],
       "isFavourite": false
     }
   ]
