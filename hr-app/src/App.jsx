@@ -25,7 +25,7 @@ function App() {
 
   const handleClick = () => {
     axios
-      .post("http://localhost:3001/employees", {
+      .post("https://hr-app-sws8.onrender.com/employees", {
         ...formData,
         skills: formData.skills
           ? formData.skills.split(",").map((s) => s.trim())
@@ -38,7 +38,7 @@ function App() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3001/employees").then((response) => {
+    axios.get("https://hr-app-sws8.onrender.com/employees").then((response) => {
       setEmployees(response.data);
     });
   }, []);

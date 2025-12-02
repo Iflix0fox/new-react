@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styles from "./AddEmployee.module.css";
 
 function AddEmployee({ formData, setFormData, handleClick }) {

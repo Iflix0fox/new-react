@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./Card.module.css";
 import animalEmojis from "../assets/animalEmojis.json";
+import useAxios from "../hooks/useAxios";
 
 const Card = (props) => {
   const [employee, setEmployee] = useState(props);
@@ -66,7 +67,10 @@ const Card = (props) => {
 
     // Send PATCH request
     axios
-      .patch(`http://localhost:3001/employees/${employee.id}`, changedFields)
+      .patch(
+        `https://hr-app-sws8.onrender.com/employees/${employee.id}`,
+        changedFields
+      )
       .then((res) => {
         setEmployee(res.data);
         setMessage("Changes saved!");
