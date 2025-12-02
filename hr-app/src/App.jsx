@@ -1,35 +1,73 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
+import PersonList from "./components/PersonList";
+import About from "./components/About";
+import { BrowserRouter as Router, Route, Routes } from "react-router";
+import { useState, useEffect } from "react";
+import AddEmployee from "./components/Addemployee";
+import axios from "axios";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [employees, setEmployees] = useState([]);
+  const [formData, setFormData] = useState({
+    name: "",
+    title: "",
+    salary: "",
+    phone: "",
+    email: "",
+    animal: "",
+    startDate: "",
+    location: "",
+    department: "",
+    skills: "",
+  });
+
+  const handleClick = () => {
+    axios
+      .post("http://localhost:3001/employees", {
+        ...formData,
+        skills: formData.skills
+          ? formData.skills.split(",").map((s) => s.trim())
+          : [],
+        isFavourite: false,
+      })
+      .then((response) => {
+        setEmployees([...employees, response.data]);
+      });
+  };
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/employees").then((response) => {
+      setEmployees(response.data);
+    });
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <Header />
+        <main className="main-content">
+          <Routes>
+            <Route path="/about" element={<About />} />
+            <Route
+              path="/add-employee"
+              element={
+                <AddEmployee
+                  formData={formData}
+                  setFormData={setFormData}
+                  handleClick={handleClick}
+                />
+              }
+            />
+
+            <Route path="/" element={<PersonList employees={employees} />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
