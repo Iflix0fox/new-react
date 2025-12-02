@@ -5,7 +5,7 @@ import PersonList from "./components/PersonList";
 import About from "./components/About";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { useState, useEffect } from "react";
-import AddEmployee from "./components/Addemployee";
+import AddEmployee from "./components/AddEmployee";
 import axios from "axios";
 
 function App() {
