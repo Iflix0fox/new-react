@@ -17,7 +17,7 @@ body {
   background-color: #4ca9c9;
 }
 
-.main-content {
+/* .main-content {
   flex: 1;
   display: flex;
   flex-wrap: wrap;
@@ -25,4 +25,4 @@ body {
   align-items: center;
   gap: 40px;
   padding: 60px 20px;
-}
+} */

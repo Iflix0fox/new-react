@@ -1,19 +1,23 @@
-import { useEffect, useState } from "react";
 import PersonCard from "./PersonCard.jsx";
-import axios from "axios";
+import styles from "./Personlist.module.css";
 
-function PersonList() {
-  const [employees, setEmployees] = useState([]);
-
-  useEffect(() => {
-    axios.get("https://hr-app-sws8.onrender.com/employees").then((response) => {
-      setEmployees(response.data);
-    });
-  }, []);
-
-  return employees.map((employee) => (
-    <PersonCard key={employee.id} {...employee} />
-  ));
+function PersonList({ employees, handleDeleteEmployee }) {
+  return (
+    <>
+      <div>
+        <h1>hi </h1>
+      </div>
+      <div className={styles.content}>
+        {employees.map((employee) => (
+          <PersonCard
+            key={employee.id}
+            {...employee}
+            handleDeleteEmployee={handleDeleteEmployee}
+          />
+        ))}
+      </div>
+    </>
+  );
 }
 
 export default PersonList;
