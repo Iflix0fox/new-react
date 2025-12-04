@@ -8,13 +8,11 @@ The backend was initially developed using JSON Server locally and is now hosted 
 
 ## 🌐 Live Demo (Frontend)
 
-👉 **https://iflix0fox.github.io**  
-or  
 👉 **https://iflix0fox.github.io/new-react**
 
 ---
 
 ## 🗄️ Live Backend (Render API)
 
-If your backend URL is something like:
+https://hr-app-sws8.onrender.com
 
