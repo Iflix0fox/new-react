@@ -1,12 +1,15 @@
 import PersonCard from "./PersonCard.jsx";
 import styles from "./Personlist.module.css";
 
-function PersonList({ employees, handleDeleteEmployee }) {
+import Button from "@mui/material/Button";
+
+function Home({ employees, handleDeleteEmployee }) {
   return (
     <>
-      <div>
-        <h1>hi </h1>
-      </div>
+      <Button sx={{ width: "100%" }} variant="contained">
+        Click Me
+      </Button>
+
       <div className={styles.content}>
         {employees.map((employee) => (
           <PersonCard
@@ -20,4 +23,4 @@ function PersonList({ employees, handleDeleteEmployee }) {
   );
 }
 
-export default PersonList;
+export default Home;

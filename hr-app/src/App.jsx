@@ -1,7 +1,7 @@
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import PersonList from "./components/PersonList";
+import Home from "./components/Home";
 import About from "./components/About";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { useState, useEffect } from "react";
@@ -71,7 +71,7 @@ function App() {
   }
 
   return (
-    <Router basename="/new-react">
+    <Router basename="/HR-APP">
       <div className="app">
         <Header />
         <main className="main-content">
@@ -79,7 +79,7 @@ function App() {
             <Route
               path="/"
               element={
-                <PersonList
+                <Home
                   employees={employees}
                   handleDeleteEmployee={handleDeleteEmployee}
                 />
