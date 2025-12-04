@@ -1,7 +1,7 @@
 import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import PersonList from "./components/PersonList";
+import Home from "./components/Home";
 import About from "./components/About";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { useState, useEffect } from "react";
@@ -53,16 +53,38 @@ function App() {
       });
   }, []);
 
+  const handleDeleteEmployee = (id) => {
+    axios
+      .delete(`https://hr-app-sws8.onrender.com/employees/${id}`)
+      .then(() => {
+        setEmployees((prevEmployees) =>
+          prevEmployees.filter((employee) => employee.id !== id)
+        );
+      })
+      .catch((error) => {
+        console.error("Error deleting employee:", error);
+      });
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <Router>
+    <Router basename="/HR-APP">
       <div className="app">
         <Header />
         <main className="main-content">
           <Routes>
+            <Route
+              path="/"
+              element={
+                <Home
+                  employees={employees}
+                  handleDeleteEmployee={handleDeleteEmployee}
+                />
+              }
+            />
             <Route path="/about" element={<About />} />
             <Route
               path="/add-employee"
@@ -74,8 +96,6 @@ function App() {
                 />
               }
             />
-
-            <Route path="/" element={<PersonList employees={employees} />} />
           </Routes>
         </main>
         <Footer />

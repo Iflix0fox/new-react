@@ -2,12 +2,16 @@ import { useState } from "react";
 import axios from "axios";
 import styles from "./Card.module.css";
 import animalEmojis from "../assets/animalEmojis.json";
-import useAxios from "../hooks/useAxios";
+
+import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
 
 const Card = (props) => {
   const [employee, setEmployee] = useState(props);
   const [isEditing, setIsEditing] = useState(false);
   const [message, setMessage] = useState("");
+
+  const { handleDeleteEmployee } = props;
 
   const [formData, setFormData] = useState({
     salary: employee?.salary || "",
@@ -148,6 +152,17 @@ const Card = (props) => {
       {yearsEmployed < 0.5 && "🔔 Schedule recognition review."}
 
       <button onClick={toggleEdit}>Edit</button>
+
+      <button onClick={() => handleDeleteEmployee(employee.id)}>Delete</button>
+      <Button
+        onClick={() => handleDeleteEmployee(employee.id)}
+        variant="contained"
+        color="secondary"
+        sx={{ padding: "0.5px" }}
+        startIcon={<DeleteIcon />}
+      >
+        Delete
+      </Button>
 
       {message && <div className={styles.message}>{message}</div>}
     </div>
