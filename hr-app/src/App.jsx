@@ -71,7 +71,7 @@ function App() {
   }
 
   return (
-    <Router basename="/HR-APP">
+    <Router basename="/new-react">
       <div className="app">
         <Header />
         <main className="main-content">
