@@ -37,11 +37,25 @@ function App() {
       });
   };
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    axios.get("https://hr-app-sws8.onrender.com/employees").then((response) => {
-      setEmployees(response.data);
-    });
+    axios
+      .get("https://hr-app-sws8.onrender.com/employees")
+      .then((response) => {
+        setEmployees(response.data);
+      })
+      .catch((error) => {
+        console.log(error, "error");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Router>
